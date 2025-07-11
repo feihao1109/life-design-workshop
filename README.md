@@ -50,7 +50,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/life-design-workshop.git
+git clone https://github.com/feihao1109/life-design-workshop.git
 
 # 进入项目目录
 cd life-design-workshop
