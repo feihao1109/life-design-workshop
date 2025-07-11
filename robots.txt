@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://life-design-workshop.vercel.app/sitemap.xml
+
+# Specific rules
+Allow: /index.html
+Allow: /style.css
+Allow: /script-simple.js
+Allow: /manifest.json
+Allow: /sw.js
+Allow: /preview.svg
+
+# Block unnecessary files
+Disallow: /script.js
+Disallow: /test.html
+Disallow: /.git/
+Disallow: /.vercel/
+Disallow: /node_modules/

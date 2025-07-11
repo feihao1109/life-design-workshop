@@ -1,0 +1,62 @@
+{
+  "name": "人生设计工坊",
+  "short_name": "人生设计",
+  "description": "基于斯坦福大学人生设计课程的在线工具，帮助用户系统地探索和设计自己的人生方向",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23667eea'/%3E%3Cpath d='M35 45 L50 30 L65 45 M50 30 L50 70' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23667eea'/%3E%3Cpath d='M35 45 L50 30 L65 45 M50 30 L50 70' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "zh-CN",
+  "scope": "/",
+  "categories": ["education", "lifestyle", "productivity"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f8fafc'/%3E%3Ctext x='400' y='300' text-anchor='middle' font-size='20' fill='%23667eea'%3E人生设计工坊%3C/text%3E%3C/svg%3E",
+      "sizes": "800x600",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "人生设计工坊主界面"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "开始新的设计",
+      "short_name": "新设计",
+      "description": "开始一个新的人生设计流程",
+      "url": "/?action=new",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23667eea' d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "查看进度",
+      "short_name": "进度",
+      "description": "查看当前的设计进度",
+      "url": "/?action=progress",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23667eea' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}

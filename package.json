@@ -1,0 +1,29 @@
+{
+  "name": "life-design-workshop",
+  "version": "1.0.0",
+  "description": "基于斯坦福大学人生设计课程的在线工具，运用设计思维的五步法，帮助用户系统地探索和设计自己的人生方向",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "serve": "npx serve .",
+    "dev": "python -m http.server 8080"
+  },
+  "keywords": [
+    "life-design",
+    "stanford",
+    "design-thinking",
+    "career-planning",
+    "self-discovery",
+    "life-planning"
+  ],
+  "author": "Life Design Workshop",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/life-design-workshop.git"
+  },
+  "homepage": "https://life-design-workshop.vercel.app",
+  "bugs": {
+    "url": "https://github.com/your-username/life-design-workshop/issues"
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .btn { padding: 10px 20px; margin: 10px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background: #5a6fd8; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>人生设计工坊 - 功能测试</h1>
+    
+    <button class="btn" onclick="testStartDesign()">测试：开始设计</button>
+    <button class="btn" onclick="testShowMethodology()">测试：显示方法论</button>
+    <button class="btn" onclick="testSaveData()">测试：保存数据</button>
+    
+    <div id="results"></div>
+    
+    <script>
+        // 基本函数测试
+        function testStartDesign() {
+            try {
+                startDesignProcess();
+                showResult('开始设计功能正常', 'success');
+            } catch (error) {
+                showResult('开始设计功能错误: ' + error.message, 'error');
+            }
+        }
+        
+        function testShowMethodology() {
+            try {
+                showMethodology();
+                showResult('方法论显示功能正常', 'success');
+            } catch (error) {
+                showResult('方法论显示功能错误: ' + error.message, 'error');
+            }
+        }
+        
+        function testSaveData() {
+            try {
+                // 模拟保存数据
+                localStorage.setItem('test', 'data');
+                showResult('数据保存功能正常', 'success');
+            } catch (error) {
+                showResult('数据保存功能错误: ' + error.message, 'error');
+            }
+        }
+        
+        function showResult(message, type) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = 'result';
+            div.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+            div.style.color = type === 'success' ? '#155724' : '#721c24';
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        // 引入主要的JavaScript文件
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            script.onload = () => {
+                showResult('主脚本加载成功', 'success');
+            };
+            script.onerror = () => {
+                showResult('主脚本加载失败', 'error');
+            };
+            document.head.appendChild(script);
+        }
+        
+        // 页面加载后测试
+        document.addEventListener('DOMContentLoaded', () => {
+            showResult('测试页面加载完成', 'success');
+            loadMainScript();
+        });
+    </script>
+</body>
+</html>

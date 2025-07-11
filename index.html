@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生设计工坊 - 设计你想要的人生</title>
+    <meta name="description" content="基于斯坦福大学人生设计课程的在线工具，运用设计思维的五步法，帮助用户系统地探索和设计自己的人生方向">
+    <meta name="keywords" content="人生设计,职业规划,自我探索,斯坦福,设计思维,人生导航">
+    <meta name="author" content="人生设计工坊">
+    
+    <!-- PWA相关 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="人生设计工坊">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="人生设计工坊 - 设计你想要的人生">
+    <meta property="og:description" content="基于斯坦福大学人生设计课程的在线工具，运用设计思维的五步法，帮助用户系统地探索和设计自己的人生方向">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://life-design-workshop.vercel.app">
+    <meta property="og:image" content="https://life-design-workshop.vercel.app/preview.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="人生设计工坊 - 设计你想要的人生">
+    <meta name="twitter:description" content="基于斯坦福大学人生设计课程的在线工具，运用设计思维的五步法，帮助用户系统地探索和设计自己的人生方向">
+    <meta name="twitter:image" content="https://life-design-workshop.vercel.app/preview.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://life-design-workshop.vercel.app/">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="zh-CN">
+    <meta name="rating" content="general">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-compass"></i>
+                <span>人生设计工坊</span>
+            </div>
+            <div class="nav-progress">
+                <div class="progress-step active" data-step="0">
+                    <i class="fas fa-home"></i>
+                    <span>开始</span>
+                </div>
+                <div class="progress-step" data-step="1">
+                    <i class="fas fa-search"></i>
+                    <span>觉察</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <i class="fas fa-question-circle"></i>
+                    <span>定义</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>构思</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <i class="fas fa-hammer"></i>
+                    <span>原型</span>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <i class="fas fa-vial"></i>
+                    <span>测试</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- 错误提示 -->
+        <div id="error-boundary" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #fee; border: 1px solid #fcc; color: #c33; padding: 10px 20px; border-radius: 5px; z-index: 10000;">
+            <span>页面遇到问题，请刷新重试</span>
+            <button onclick="location.reload()" style="margin-left: 10px; padding: 2px 8px; background: #c33; color: white; border: none; border-radius: 3px; cursor: pointer;">刷新</button>
+        </div>
+        <!-- 欢迎页面 -->
+        <section id="welcome-section" class="section active">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">设计你想要的人生</span>
+                </h1>
+                <p class="hero-subtitle">
+                    基于斯坦福大学人生设计课程，运用设计思维的五步法，
+                    帮助你探索真正的自己，设计充满意义的人生道路。
+                </p>
+                
+                <div class="methodology-overview">
+                    <h3>斯坦福人生设计五步法</h3>
+                    <div class="steps-preview">
+                        <div class="step-item">
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>1. 觉察当下</h4>
+                            <p>了解现状，发现真实的自己</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h4>2. 定义问题</h4>
+                            <p>明确核心挑战和机会点</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>3. 构思方案</h4>
+                            <p>创造多种可能的人生路径</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <h4>4. 制作原型</h4>
+                            <p>设计小型实验验证想法</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <h4>5. 测试迭代</h4>
+                            <p>从实验中学习并优化路径</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="startDesignProcess()">
+                        <i class="fas fa-play"></i>
+                        开始设计之旅
+                    </button>
+                    <button class="btn-secondary" onclick="showMethodology()">
+                        <i class="fas fa-info-circle"></i>
+                        了解方法论
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一步：觉察当下 -->
+        <section id="awareness-section" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-search"></i> 第一步：觉察当下</h2>
+                <p>了解你的现状，发现真实的自己</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="tool-card">
+                    <h3><i class="fas fa-battery-half"></i> 人生仪表板</h3>
+                    <p>评估人生四个关键领域的满意度</p>
+                    <div class="dashboard">
+                        <div class="dashboard-item">
+                            <label>健康 Health</label>
+                            <div class="slider-container">
+                                <input type="range" min="1" max="10" value="5" class="dashboard-slider" data-area="health">
+                                <span class="slider-value">5</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <label>工作 Work</label>
+                            <div class="slider-container">
+                                <input type="range" min="1" max="10" value="5" class="dashboard-slider" data-area="work">
+                                <span class="slider-value">5</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <label>娱乐 Play</label>
+                            <div class="slider-container">
+                                <input type="range" min="1" max="10" value="5" class="dashboard-slider" data-area="play">
+                                <span class="slider-value">5</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <label>爱 Love</label>
+                            <div class="slider-container">
+                                <input type="range" min="1" max="10" value="5" class="dashboard-slider" data-area="love">
+                                <span class="slider-value">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-tool" onclick="saveDashboard()">保存当前状态</button>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-map-marked-alt"></i> 工作观与人生观</h3>
+                    <p>明确你对工作和人生的核心信念</p>
+                    <div class="reflection-area">
+                        <div class="reflection-question">
+                            <h4>我的工作观</h4>
+                            <textarea placeholder="工作对你意味着什么？你为什么工作？工作给你带来什么？" rows="4"></textarea>
+                        </div>
+                        <div class="reflection-question">
+                            <h4>我的人生观</h4>
+                            <textarea placeholder="什么让人生有意义？你想成为什么样的人？什么是美好的人生？" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn-tool" onclick="saveViews()">保存观念</button>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-heart"></i> 能量审查</h3>
+                    <p>识别给你能量和消耗能量的活动</p>
+                    <div class="energy-audit">
+                        <div class="energy-column">
+                            <h4><i class="fas fa-plus-circle text-green"></i> 给我能量的活动</h4>
+                            <div class="activity-list" id="energizing-activities">
+                                <div class="activity-input">
+                                    <input type="text" placeholder="例如：与朋友聊天、学习新技能...">
+                                    <button onclick="addActivity('energizing')"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="energy-column">
+                            <h4><i class="fas fa-minus-circle text-red"></i> 消耗我能量的活动</h4>
+                            <div class="activity-list" id="draining-activities">
+                                <div class="activity-input">
+                                    <input type="text" placeholder="例如：长时间开会、重复性工作...">
+                                    <button onclick="addActivity('draining')"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-actions">
+                <button class="btn-secondary" onclick="previousStep()">返回</button>
+                <button class="btn-primary" onclick="completeAwareness()">完成觉察 →</button>
+            </div>
+        </section>
+
+        <!-- 第二步：定义问题 -->
+        <section id="define-section" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-question-circle"></i> 第二步：定义问题</h2>
+                <p>重新定义你面临的挑战，发现新的机会</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="tool-card full-width">
+                    <h3><i class="fas fa-bullseye"></i> 问题重构</h3>
+                    <p>将"我应该做什么"转换为"我如何能够..."的形式</p>
+                    
+                    <div class="problem-reframing">
+                        <div class="reframe-step">
+                            <h4>1. 当前困惑</h4>
+                            <textarea placeholder="描述你当前面临的职业或人生困惑..." rows="3"></textarea>
+                        </div>
+                        
+                        <div class="reframe-step">
+                            <h4>2. 重新定义</h4>
+                            <p class="instruction">将困惑转换为"我如何能够..."的问题形式</p>
+                            <div class="hmw-questions" id="hmw-list">
+                                <div class="hmw-input">
+                                    <span class="hmw-prefix">我如何能够</span>
+                                    <input type="text" placeholder="例如：找到既有意义又有收入的工作">
+                                    <button onclick="addHMW()"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="reframe-step">
+                            <h4>3. 选择焦点</h4>
+                            <p class="instruction">从上面的问题中选择最重要的3个作为设计焦点</p>
+                            <div class="focus-questions" id="focus-list">
+                                <!-- 动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-anchor"></i> 价值观锚点</h3>
+                    <p>明确你的核心价值观</p>
+                    <div class="values-selection">
+                        <div class="values-grid">
+                            <div class="value-item" data-value="autonomy">自主</div>
+                            <div class="value-item" data-value="creativity">创造力</div>
+                            <div class="value-item" data-value="family">家庭</div>
+                            <div class="value-item" data-value="growth">成长</div>
+                            <div class="value-item" data-value="impact">影响力</div>
+                            <div class="value-item" data-value="security">安全感</div>
+                            <div class="value-item" data-value="adventure">冒险</div>
+                            <div class="value-item" data-value="service">服务他人</div>
+                            <div class="value-item" data-value="achievement">成就感</div>
+                            <div class="value-item" data-value="balance">平衡</div>
+                            <div class="value-item" data-value="learning">学习</div>
+                            <div class="value-item" data-value="recognition">认可</div>
+                        </div>
+                        <p class="instruction">选择最重要的5个价值观</p>
+                        <div class="selected-values" id="selected-values"></div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-compass"></i> 人生方向感</h3>
+                    <p>探索你的人生使命和方向</p>
+                    <div class="direction-exploration">
+                        <div class="exploration-question">
+                            <h4>如果金钱不是问题，你会做什么？</h4>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <div class="exploration-question">
+                            <h4>什么样的工作会让你充满期待地起床？</h4>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <div class="exploration-question">
+                            <h4>你希望在什么样的环境中工作？</h4>
+                            <textarea rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-actions">
+                <button class="btn-secondary" onclick="previousStep()">← 上一步</button>
+                <button class="btn-primary" onclick="completeDefine()">完成定义 →</button>
+            </div>
+        </section>
+
+        <!-- 第三步：构思方案 -->
+        <section id="ideate-section" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-lightbulb"></i> 第三步：构思方案</h2>
+                <p>创造多种可能的人生路径，设计奥德赛计划</p>
+            </div>
+            
+            <div class="odyssey-plans">
+                <div class="plan-intro">
+                    <h3>奥德赛计划</h3>
+                    <p>设计三个不同的5年人生计划，探索多种可能性</p>
+                </div>
+                
+                <div class="plans-grid">
+                    <div class="odyssey-plan" data-plan="1">
+                        <div class="plan-header">
+                            <h4><i class="fas fa-route"></i> 计划A：当前轨道</h4>
+                            <p>基于现有路径的延续和优化</p>
+                        </div>
+                        <div class="plan-content">
+                            <div class="plan-field">
+                                <label>计划名称</label>
+                                <input type="text" placeholder="例如：深耕技术专家之路">
+                            </div>
+                            <div class="plan-field">
+                                <label>核心描述</label>
+                                <textarea placeholder="描述这个5年计划的主要内容..." rows="3"></textarea>
+                            </div>
+                            <div class="plan-timeline">
+                                <h5>关键里程碑</h5>
+                                <div class="milestone">
+                                    <span class="milestone-year">第1年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第3年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第5年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                            </div>
+                            <div class="plan-metrics">
+                                <div class="metric">
+                                    <span>兴趣度</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>可行性</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>资源需求</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="odyssey-plan" data-plan="2">
+                        <div class="plan-header">
+                            <h4><i class="fas fa-rocket"></i> 计划B：理想路径</h4>
+                            <p>如果一切顺利，你最想要的生活</p>
+                        </div>
+                        <div class="plan-content">
+                            <div class="plan-field">
+                                <label>计划名称</label>
+                                <input type="text" placeholder="例如：创业改变世界">
+                            </div>
+                            <div class="plan-field">
+                                <label>核心描述</label>
+                                <textarea placeholder="描述这个5年计划的主要内容..." rows="3"></textarea>
+                            </div>
+                            <div class="plan-timeline">
+                                <h5>关键里程碑</h5>
+                                <div class="milestone">
+                                    <span class="milestone-year">第1年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第3年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第5年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                            </div>
+                            <div class="plan-metrics">
+                                <div class="metric">
+                                    <span>兴趣度</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>可行性</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>资源需求</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="odyssey-plan" data-plan="3">
+                        <div class="plan-header">
+                            <h4><i class="fas fa-parachute-box"></i> 计划C：备选方案</h4>
+                            <p>如果计划A和B都不可行的替代选择</p>
+                        </div>
+                        <div class="plan-content">
+                            <div class="plan-field">
+                                <label>计划名称</label>
+                                <input type="text" placeholder="例如：回归教育领域">
+                            </div>
+                            <div class="plan-field">
+                                <label>核心描述</label>
+                                <textarea placeholder="描述这个5年计划的主要内容..." rows="3"></textarea>
+                            </div>
+                            <div class="plan-timeline">
+                                <h5>关键里程碑</h5>
+                                <div class="milestone">
+                                    <span class="milestone-year">第1年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第3年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                                <div class="milestone">
+                                    <span class="milestone-year">第5年</span>
+                                    <input type="text" placeholder="主要目标">
+                                </div>
+                            </div>
+                            <div class="plan-metrics">
+                                <div class="metric">
+                                    <span>兴趣度</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>可行性</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                                <div class="metric">
+                                    <span>资源需求</span>
+                                    <div class="rating">
+                                        <i class="fas fa-star" data-rating="1"></i>
+                                        <i class="fas fa-star" data-rating="2"></i>
+                                        <i class="fas fa-star" data-rating="3"></i>
+                                        <i class="fas fa-star" data-rating="4"></i>
+                                        <i class="fas fa-star" data-rating="5"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-actions">
+                <button class="btn-secondary" onclick="previousStep()">← 上一步</button>
+                <button class="btn-primary" onclick="completeIdeate()">完成构思 →</button>
+            </div>
+        </section>
+
+        <!-- 第四步：制作原型 -->
+        <section id="prototype-section" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-hammer"></i> 第四步：制作原型</h2>
+                <p>设计小型实验，低成本验证你的想法</p>
+            </div>
+            
+            <div class="prototype-tools">
+                <div class="tool-card">
+                    <h3><i class="fas fa-flask"></i> 原型实验设计</h3>
+                    <p>为你的奥德赛计划设计可行的实验</p>
+                    
+                    <div class="experiment-designer">
+                        <div class="experiment-selector">
+                            <h4>选择要验证的计划</h4>
+                            <div class="plan-selector">
+                                <button class="plan-select-btn" data-plan="A">计划A</button>
+                                <button class="plan-select-btn" data-plan="B">计划B</button>
+                                <button class="plan-select-btn" data-plan="C">计划C</button>
+                            </div>
+                        </div>
+                        
+                        <div class="experiment-form" id="experiment-form">
+                            <div class="form-group">
+                                <label>实验目标</label>
+                                <textarea placeholder="你想通过这个实验验证什么假设？" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>实验类型</label>
+                                <select>
+                                    <option value="">选择实验类型</option>
+                                    <option value="interview">信息访谈</option>
+                                    <option value="shadow">工作观察</option>
+                                    <option value="volunteer">志愿服务</option>
+                                    <option value="course">学习课程</option>
+                                    <option value="network">社交网络</option>
+                                    <option value="prototype">制作原型</option>
+                                    <option value="side-project">副业项目</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>具体行动</label>
+                                <textarea placeholder="描述你将要采取的具体行动..." rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>时间投入</label>
+                                    <input type="text" placeholder="例如：每周2小时，持续4周">
+                                </div>
+                                <div class="form-group">
+                                    <label>资源需求</label>
+                                    <input type="text" placeholder="例如：500元，需要联系3个行业专家">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>成功指标</label>
+                                <textarea placeholder="如何判断实验是否成功？你期望获得什么信息？" rows="2"></textarea>
+                            </div>
+                            
+                            <button class="btn-tool" onclick="addExperiment()">
+                                <i class="fas fa-plus"></i> 添加实验
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-list-check"></i> 实验清单</h3>
+                    <p>管理你的原型实验</p>
+                    
+                    <div class="experiments-list" id="experiments-list">
+                        <div class="empty-state">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>开始设计你的第一个实验吧！</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-users"></i> 网络建设</h3>
+                    <p>建立支持你人生设计的人际网络</p>
+                    
+                    <div class="network-builder">
+                        <div class="network-category">
+                            <h4><i class="fas fa-graduation-cap"></i> 导师 (Mentors)</h4>
+                            <p>能够指导你方向的资深人士</p>
+                            <div class="contact-list" id="mentors-list">
+                                <div class="contact-input">
+                                    <input type="text" placeholder="姓名和联系方式">
+                                    <button onclick="addContact('mentors')"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="network-category">
+                            <h4><i class="fas fa-handshake"></i> 合作者 (Collaborators)</h4>
+                            <p>与你在同一水平，能够相互支持的同伴</p>
+                            <div class="contact-list" id="collaborators-list">
+                                <div class="contact-input">
+                                    <input type="text" placeholder="姓名和联系方式">
+                                    <button onclick="addContact('collaborators')"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="network-category">
+                            <h4><i class="fas fa-seedling"></i> 支持者 (Supporters)</h4>
+                            <p>家人朋友等情感支持系统</p>
+                            <div class="contact-list" id="supporters-list">
+                                <div class="contact-input">
+                                    <input type="text" placeholder="姓名和联系方式">
+                                    <button onclick="addContact('supporters')"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-actions">
+                <button class="btn-secondary" onclick="previousStep()">← 上一步</button>
+                <button class="btn-primary" onclick="completePrototype()">完成原型 →</button>
+            </div>
+        </section>
+
+        <!-- 第五步：测试迭代 -->
+        <section id="test-section" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-vial"></i> 第五步：测试迭代</h2>
+                <p>从实验中学习，持续优化你的人生方向</p>
+            </div>
+            
+            <div class="test-tools">
+                <div class="tool-card">
+                    <h3><i class="fas fa-clipboard-check"></i> 实验日志</h3>
+                    <p>记录和反思你的实验结果</p>
+                    
+                    <div class="experiment-log">
+                        <div class="log-entry-form">
+                            <div class="form-group">
+                                <label>选择实验</label>
+                                <select id="experiment-selector">
+                                    <option value="">选择要记录的实验</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>实验状态</label>
+                                <div class="status-options">
+                                    <label class="status-option">
+                                        <input type="radio" name="status" value="planning">
+                                        <span>计划中</span>
+                                    </label>
+                                    <label class="status-option">
+                                        <input type="radio" name="status" value="in-progress">
+                                        <span>进行中</span>
+                                    </label>
+                                    <label class="status-option">
+                                        <input type="radio" name="status" value="completed">
+                                        <span>已完成</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>关键发现</label>
+                                <textarea placeholder="这次实验你发现了什么？有什么意外的收获？" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>情感体验</label>
+                                <textarea placeholder="在实验过程中你的感受如何？是否符合预期？" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>能量水平 (1-10)</label>
+                                    <input type="range" min="1" max="10" value="5" class="energy-slider">
+                                    <span class="slider-value">5</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>兴趣程度 (1-10)</label>
+                                    <input type="range" min="1" max="10" value="5" class="interest-slider">
+                                    <span class="slider-value">5</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>下一步行动</label>
+                                <textarea placeholder="基于这次实验，你的下一步计划是什么？" rows="2"></textarea>
+                            </div>
+                            
+                            <button class="btn-tool" onclick="saveLogEntry()">
+                                <i class="fas fa-save"></i> 保存日志
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-chart-line"></i> 学习洞察</h3>
+                    <p>分析实验数据，获得深层洞察</p>
+                    
+                    <div class="insights-dashboard">
+                        <div class="insight-metric">
+                            <h4>能量模式</h4>
+                            <div class="energy-chart" id="energy-chart">
+                                <canvas width="300" height="150"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-metric">
+                            <h4>关键模式</h4>
+                            <div class="patterns-list" id="patterns-list">
+                                <div class="pattern-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>分析你的实验数据以发现模式...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-metric">
+                            <h4>重要发现</h4>
+                            <div class="discoveries" id="discoveries">
+                                <textarea placeholder="总结你最重要的发现和洞察..." rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-sync-alt"></i> 迭代优化</h3>
+                    <p>基于学习结果调整你的人生设计</p>
+                    
+                    <div class="iteration-planner">
+                        <div class="iteration-step">
+                            <h4>1. 回顾奥德赛计划</h4>
+                            <p>基于实验结果，哪个计划最有潜力？</p>
+                            <div class="plan-review">
+                                <div class="plan-score">
+                                    <span>计划A评分：</span>
+                                    <div class="score-input">
+                                        <input type="range" min="1" max="10" value="5">
+                                        <span class="score-value">5</span>
+                                    </div>
+                                </div>
+                                <div class="plan-score">
+                                    <span>计划B评分：</span>
+                                    <div class="score-input">
+                                        <input type="range" min="1" max="10" value="5">
+                                        <span class="score-value">5</span>
+                                    </div>
+                                </div>
+                                <div class="plan-score">
+                                    <span>计划C评分：</span>
+                                    <div class="score-input">
+                                        <input type="range" min="1" max="10" value="5">
+                                        <span class="score-value">5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="iteration-step">
+                            <h4>2. 确定下一步</h4>
+                            <div class="next-actions">
+                                <div class="action-type">
+                                    <h5>需要更多实验的领域</h5>
+                                    <textarea placeholder="哪些方面还需要进一步验证？" rows="2"></textarea>
+                                </div>
+                                <div class="action-type">
+                                    <h5>可以开始行动的方面</h5>
+                                    <textarea placeholder="基于现有信息，你可以立即开始什么？" rows="2"></textarea>
+                                </div>
+                                <div class="action-type">
+                                    <h5>需要放弃的想法</h5>
+                                    <textarea placeholder="什么想法被证明不可行或不适合？" rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="iteration-step">
+                            <h4>3. 制定行动计划</h4>
+                            <div class="action-plan">
+                                <div class="timeline-item">
+                                    <span class="timeline-period">本月行动</span>
+                                    <input type="text" placeholder="这个月你将采取什么行动？">
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-period">3个月目标</span>
+                                    <input type="text" placeholder="3个月内你希望达成什么？">
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-period">1年愿景</span>
+                                    <input type="text" placeholder="1年后你希望看到什么变化？">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-actions">
+                <button class="btn-secondary" onclick="previousStep()">← 上一步</button>
+                <button class="btn-primary" onclick="completeDesignProcess()">完成设计之旅</button>
+            </div>
+        </section>
+        
+        <!-- 完成页面 -->
+        <section id="completion-section" class="section">
+            <div class="completion-content">
+                <div class="completion-header">
+                    <i class="fas fa-trophy completion-icon"></i>
+                    <h2>恭喜！你已完成人生设计之旅</h2>
+                    <p>现在你拥有了一套系统的方法来设计和迭代你的人生</p>
+                </div>
+                
+                <div class="completion-summary">
+                    <h3>你的人生设计成果</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement">
+                            <i class="fas fa-search"></i>
+                            <h4>深度自我觉察</h4>
+                            <p>了解了自己的现状、价值观和能量模式</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-question-circle"></i>
+                            <h4>清晰问题定义</h4>
+                            <p>将困惑转化为可行动的设计挑战</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>多元路径规划</h4>
+                            <p>创建了三个不同的5年奥德赛计划</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-hammer"></i>
+                            <h4>实践验证能力</h4>
+                            <p>学会了设计实验验证想法的方法</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-vial"></i>
+                            <h4>持续迭代思维</h4>
+                            <p>建立了从实验中学习和优化的能力</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h3>继续你的人生设计</h3>
+                    <div class="steps-list">
+                        <div class="step">
+                            <i class="fas fa-play"></i>
+                            <span>开始执行你的实验计划</span>
+                        </div>
+                        <div class="step">
+                            <i class="fas fa-calendar"></i>
+                            <span>每月回顾和调整你的方向</span>
+                        </div>
+                        <div class="step">
+                            <i class="fas fa-users"></i>
+                            <span>建立和维护你的支持网络</span>
+                        </div>
+                        <div class="step">
+                            <i class="fas fa-book"></i>
+                            <span>持续学习和成长</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="completion-actions">
+                    <button class="btn-primary" onclick="new ReportGenerator(app.data).exportToPDF()">
+                        <i class="fas fa-file-pdf"></i>
+                        下载PDF报告
+                    </button>
+                    <button class="btn-primary" onclick="new ReportGenerator(app.data).exportToJSON()">
+                        <i class="fas fa-download"></i>
+                        导出数据
+                    </button>
+                    <button class="btn-secondary" onclick="DataManager.importData()">
+                        <i class="fas fa-upload"></i>
+                        导入数据
+                    </button>
+                    <button class="btn-secondary" onclick="app.goToStep(0)">
+                        <i class="fas fa-redo"></i>
+                        重新开始
+                    </button>
+                </div>
+                
+                <div style="margin-top: 2rem; text-align: center;">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <i class="fas fa-lightbulb"></i>
+                        恭喜你完成了人生设计的第一个完整周期！记住，这是一个持续迭代的过程。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script-simple.js"></script>
+</body>
+</html>
