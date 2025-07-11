@@ -12,7 +12,7 @@
 
 ## 🚀 在线体验
 
-访问：[https://life-design-workshop.vercel.app](https://life-design-workshop.vercel.app)
+访问：[https://life-design-workshop-2p62.vercel.app](https://life-design-workshop-2p62.vercel.app)
 
 ## 🛠️ 技术栈
 
